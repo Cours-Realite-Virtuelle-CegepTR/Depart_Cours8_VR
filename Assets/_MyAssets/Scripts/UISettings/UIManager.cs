@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Interface du panneau d'options : place les contrôles selon les préférences
 /// actuelles, puis transmet chaque changement au SettingsManager.
-/// Cours 8 : il est posé sur la racine du prefab OptionsPanel, réutilisé dans le menu
+/// Cours 9 : il est posé sur la racine du prefab OptionsPanel, réutilisé dans le menu
 /// de départ et dans le menu de pause. Quitter et Relancer sont passés dans ces menus.
 /// </summary>
 public class UIManager : MonoBehaviour
