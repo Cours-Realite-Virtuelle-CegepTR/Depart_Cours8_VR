@@ -22,7 +22,6 @@ public class PlayerStartAlignment : MonoBehaviour
     [SerializeField] int _settleFrames = 2;
 
     XROrigin _origin;
-    CanvasGroup _faderGroup;
     Vector3 _startPosition;
     Vector3 _startForward;
     Coroutine _alignRoutine;
@@ -30,9 +29,6 @@ public class PlayerStartAlignment : MonoBehaviour
     void Awake()
     {
         _origin = GetComponentInChildren<XROrigin>();
-        // Le voile du fondu (pour le journal seulement) : le CanvasGroup du ScreenFader, s'il existe.
-        var fader = FallSafety.FindScreenFader(transform);
-        if (fader != null) _faderGroup = fader.GetComponent<CanvasGroup>();
         if (_origin == null)
         {
             Debug.LogWarning("PlayerStartAlignment : aucun XROrigin dans les enfants, rien à aligner.", this);
@@ -79,8 +75,7 @@ public class PlayerStartAlignment : MonoBehaviour
         for (int i = 0; i < _settleFrames; i++) yield return null;
 
         AlignToStart();
-        Debug.Log($"PlayerStartAlignment : aligné {Time.timeSinceLevelLoad:0.00} s après le chargement, " +
-                  $"voile du fondu à {(_faderGroup != null ? _faderGroup.alpha : -1f):0.00}.");
+        Debug.Log($"PlayerStartAlignment : aligné {Time.timeSinceLevelLoad:0.00} s après le chargement.");
         _alignRoutine = null;
     }
 
